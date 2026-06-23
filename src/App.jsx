@@ -1,9 +1,9 @@
-import ToggleButton from './ToggleButton';
+import ShoppingCart from './ShoppingCart';
 
 const App = () => {
   return (
     <div>
-      <ToggleButton />
+      <ShoppingCart />
     </div>
   );
 };
