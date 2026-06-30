@@ -1,38 +1,25 @@
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("");
-  const [greeting, setGreeting] = useState("");
+  const [mouse, setMouse] = useState({
+    x: 0,
+    y: 0,
+  });
 
-  const [displayName, setDisplayName] = useState("");
-  const [displayGreeting, setDisplayGreeting] = useState("");
-
-  const showGreeting = () => {
-    setDisplayName(name);
-    setDisplayGreeting(greeting);
+  const handleMouseMove = (e) => {
+    setMouse((prev) => ({
+      x: e.clientX !== prev.x ? e.clientX : prev.x,
+      y: e.clientY !== prev.y ? e.clientY : prev.y,
+    }));
   };
 
   return (
-    <div>
-      <h1>Enter Your Name:</h1>
-
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-
-      <h1>Choose a Greeting:</h1>
-
-      <input
-        type="text"
-        value={greeting}
-        onChange={(e) => setGreeting(e.target.value)}
-      />
-
-
-
-      <h2>{displayGreeting} {displayName}</h2>
+    <div
+      onMouseMove={handleMouseMove}
+      style={{ height: "100vh" }}
+    >
+      <h2>Mouse X: {mouse.x}</h2>
+      <h2>Mouse Y: {mouse.y}</h2>
     </div>
   );
 }
